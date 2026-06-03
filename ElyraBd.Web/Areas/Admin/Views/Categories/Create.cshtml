@@ -1,0 +1,9 @@
+@model CategoryDto
+@{ ViewData["Title"] = "Add Category"; }
+<div class="admin-table-card p-4" style="max-width:480px">
+    <form asp-action="Create" method="post">
+        @Html.AntiForgeryToken()
+        <partial name="_CategoryForm" />
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+</div>

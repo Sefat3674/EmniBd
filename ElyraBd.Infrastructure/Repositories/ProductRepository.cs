@@ -17,6 +17,7 @@ public class ProductRepository : GenericRepository<Product>, IProductRepository
             .Include(p => p.Images)
             .Include(p => p.Offers)
             .Include(p => p.Reviews)
+                .ThenInclude(r => r.User)
             .FirstOrDefaultAsync(p => p.Id == id, cancellationToken);
 
     public async Task<IReadOnlyList<Product>> GetFeaturedAsync(int count, CancellationToken cancellationToken = default) =>

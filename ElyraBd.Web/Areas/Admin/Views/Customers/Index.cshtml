@@ -1,0 +1,24 @@
+@model IReadOnlyList<CustomerSummary>
+@{
+    ViewData["Title"] = "Customers";
+}
+
+<div class="admin-table-card">
+    <table class="table table-hover mb-0">
+        <thead class="table-light">
+            <tr><th>Name</th><th>Email</th><th>Registered</th><th>Last login</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+        @foreach (var c in Model)
+        {
+            <tr>
+                <td>@c.FullName</td>
+                <td>@c.Email</td>
+                <td>@c.CreatedAt.ToLocalTime().ToString("d")</td>
+                <td>@(c.LastLoginAt?.ToLocalTime().ToString("g") ?? "—")</td>
+                <td>@(c.IsActive ? "Active" : "Inactive")</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

@@ -34,6 +34,7 @@ public static class DbInitializer
         await SeedRolesAsync(roleManager, logger);
         await SeedAdminAsync(userManager, configuration, logger);
         await SeedCategoriesAsync(context, logger);
+        await SeedSampleProductsAsync(context, logger);
     }
 
     private static async Task SeedRolesAsync(RoleManager<IdentityRole> roleManager, ILogger logger)
@@ -95,14 +96,40 @@ public static class DbInitializer
 
         var categories = new[]
         {
-            new Category { Name = "Electronics", Description = "Gadgets, phones, and accessories" },
-            new Category { Name = "Fashion", Description = "Clothing and apparel" },
-            new Category { Name = "Home & Living", Description = "Furniture and home essentials" },
-            new Category { Name = "Beauty", Description = "Skincare and personal care" }
+            new Category { Name = "Cosmetics", Description = "Makeup, lipstick, and beauty essentials" },
+            new Category { Name = "Women's Fashion", Description = "Dresses, bags, and accessories" },
+            new Category { Name = "Household", Description = "Home and kitchen essentials" },
+            new Category { Name = "Skincare", Description = "Serums, creams, and face care" }
         };
 
         context.Categories.AddRange(categories);
         await context.SaveChangesAsync();
         logger.LogInformation("Seeded {Count} categories", categories.Length);
+    }
+
+    private static async Task SeedSampleProductsAsync(ApplicationDbContext context, ILogger logger)
+    {
+        if (await context.Products.AnyAsync())
+            return;
+
+        var categories = await context.Categories.ToListAsync();
+        var cosmetics = categories.First(c => c.Name == "Cosmetics");
+        var fashion = categories.First(c => c.Name == "Women's Fashion");
+        var household = categories.First(c => c.Name == "Household");
+        var skincare = categories.First(c => c.Name == "Skincare");
+
+        var products = new List<Product>
+        {
+            new() { Name = "Matte Lipstick Set", Description = "Long-lasting matte lipstick trio — perfect daily wear.", Price = 1200, DiscountPercent = 15, Stock = 50, CategoryId = cosmetics.Id, IsFeatured = true, IsActive = true },
+            new() { Name = "Floral Summer Dress", Description = "Light cotton midi dress for summer occasions.", Price = 2890, DiscountPercent = 20, Stock = 30, CategoryId = fashion.Id, IsFeatured = true, IsActive = true },
+            new() { Name = "Kitchen Storage Set", Description = "BPA-free containers for organized pantry storage.", Price = 1599, DiscountPercent = 0, Stock = 40, CategoryId = household.Id, IsActive = true },
+            new() { Name = "Vitamin C Face Serum", Description = "Brightening serum with hyaluronic acid.", Price = 1850, DiscountPercent = 10, Stock = 60, CategoryId = skincare.Id, IsFeatured = true, IsActive = true },
+            new() { Name = "Designer Handbag", Description = "Premium faux-leather handbag with gold hardware.", Price = 3500, DiscountPercent = 25, Stock = 15, CategoryId = fashion.Id, IsActive = true },
+            new() { Name = "LED Desk Lamp", Description = "Adjustable warm/cool light for home office.", Price = 2200, DiscountPercent = 5, Stock = 25, CategoryId = household.Id, IsActive = true }
+        };
+
+        context.Products.AddRange(products);
+        await context.SaveChangesAsync();
+        logger.LogInformation("Seeded {Count} sample products", products.Count);
     }
 }

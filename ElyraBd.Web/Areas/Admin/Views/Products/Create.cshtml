@@ -1,0 +1,17 @@
+@model ProductUpsertDto
+@{
+    ViewData["Title"] = "Add Product";
+}
+
+<div class="admin-table-card p-4" style="max-width:720px">
+    <form asp-action="Create" method="post" enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+        <partial name="_ProductForm" model="Model" />
+        <div class="mb-3">
+            <label class="form-label">Product images</label>
+            <input type="file" name="images" class="form-control" multiple accept="image/*" />
+        </div>
+        <button type="submit" class="btn btn-primary">Create product</button>
+        <a asp-action="Index" class="btn btn-link">Cancel</a>
+    </form>
+</div>

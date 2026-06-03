@@ -1,0 +1,119 @@
+@model DashboardStatsDto
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="row g-3 mb-4">
+    <div class="col-md-3 col-6">
+        <div class="stat-card">
+            <div class="stat-icon" style="background:#eef2ff;color:#6366f1"><i class="bi bi-box-seam"></i></div>
+            <h3>@Model.TotalProducts</h3>
+            <p>Total Products</p>
+        </div>
+    </div>
+    <div class="col-md-3 col-6">
+        <div class="stat-card">
+            <div class="stat-icon" style="background:#ecfdf5;color:#10b981"><i class="bi bi-people"></i></div>
+            <h3>@Model.TotalCustomers</h3>
+            <p>Total Customers</p>
+        </div>
+    </div>
+    <div class="col-md-3 col-6">
+        <div class="stat-card">
+            <div class="stat-icon" style="background:#fff7ed;color:#f97316"><i class="bi bi-receipt"></i></div>
+            <h3>@Model.TotalOrders</h3>
+            <p>Total Orders</p>
+        </div>
+    </div>
+    <div class="col-md-3 col-6">
+        <div class="stat-card">
+            <div class="stat-icon" style="background:#fdf4ff;color:#a855f7"><i class="bi bi-currency-dollar"></i></div>
+            <h3>৳@Model.TotalRevenue.ToString("N0")</h3>
+            <p>Total Revenue</p>
+        </div>
+    </div>
+</div>
+
+<div class="row g-3 mb-4">
+    <div class="col-md-4">
+        <div class="stat-card">
+            <p class="text-muted small mb-1">Active logins today</p>
+            <h4 class="fw-bold mb-0">@Model.ActiveUsersToday</h4>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="stat-card">
+            <p class="text-muted small mb-1">New registrations today</p>
+            <h4 class="fw-bold mb-0">@Model.NewRegistrationsToday</h4>
+        </div>
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-lg-8">
+        <div class="admin-table-card p-3">
+            <h5 class="fw-bold mb-3">Revenue (6 months)</h5>
+            <canvas id="salesChart" height="120"></canvas>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="admin-table-card p-3">
+            <h5 class="fw-bold mb-3">Orders by status</h5>
+            <canvas id="orderStatusChart"></canvas>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="admin-table-card p-3">
+            <h5 class="fw-bold mb-3">Products by category</h5>
+            <canvas id="categoryChart" height="140"></canvas>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="admin-table-card p-3">
+            <h5 class="fw-bold mb-3">Recent activity</h5>
+            <div class="table-responsive">
+                <table class="table table-sm mb-0">
+                    <thead><tr><th>User</th><th>Action</th><th>When</th></tr></thead>
+                    <tbody>
+                    @foreach (var a in Model.RecentActivities)
+                    {
+                        <tr>
+                            <td>@a.UserName</td>
+                            <td>@a.Activity @(a.ProductName != null ? $"· {a.ProductName}" : "")</td>
+                            <td class="text-muted small">@a.CreatedAt.ToLocalTime().ToString("g")</td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script>
+        const salesLabels = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.SalesByMonth.Select(x => x.Label)));
+        const salesData = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.SalesByMonth.Select(x => x.Value)));
+        new Chart(document.getElementById('salesChart'), {
+            type: 'line',
+            data: { labels: salesLabels, datasets: [{ label: 'Revenue (৳)', data: salesData, borderColor: '#6366f1', backgroundColor: 'rgba(99,102,241,0.1)', fill: true, tension: 0.4 }] },
+            options: { responsive: true, plugins: { legend: { display: false } } }
+        });
+        new Chart(document.getElementById('orderStatusChart'), {
+            type: 'doughnut',
+            data: {
+                labels: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.OrdersByStatus.Select(x => x.Label))),
+                datasets: [{ data: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.OrdersByStatus.Select(x => x.Value))), backgroundColor: ['#fbbf24','#6366f1','#22d3ee','#10b981','#ef4444'] }]
+            }
+        });
+        new Chart(document.getElementById('categoryChart'), {
+            type: 'bar',
+            data: {
+                labels: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.ProductsByCategory.Select(x => x.Label))),
+                datasets: [{ label: 'Products', data: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.ProductsByCategory.Select(x => x.Value))), backgroundColor: '#8b5cf6' }]
+            },
+            options: { plugins: { legend: { display: false } } }
+        });
+    </script>
+}

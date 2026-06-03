@@ -1,0 +1,38 @@
+@model ProductDto
+<div class="product-card">
+    <a asp-action="Details" asp-route-id="@Model.Id" class="text-decoration-none text-dark">
+        <div class="product-card-img">
+            @if (Model.HasDiscount)
+            {
+                <span class="badge-discount">-@Model.DiscountPercent.ToString("0")%</span>
+            }
+            @if (Model.IsFeatured)
+            {
+                <span class="badge-featured">Featured</span>
+            }
+            @if (!string.IsNullOrEmpty(Model.PrimaryImageUrl))
+            {
+                <img src="@Model.PrimaryImageUrl" alt="@Model.Name" />
+            }
+            else
+            {
+                <i class="bi bi-image placeholder-icon"></i>
+            }
+        </div>
+        <div class="product-card-body">
+            <p class="small text-muted mb-1">@Model.CategoryName</p>
+            <h6 class="fw-bold mb-1">@Model.Name</h6>
+            <div>
+                <span class="product-price">৳@Model.SalePrice.ToString("N0")</span>
+                @if (Model.HasDiscount)
+                {
+                    <span class="product-price-old">৳@Model.Price.ToString("N0")</span>
+                }
+            </div>
+            @if (Model.ReviewCount > 0)
+            {
+                <small class="text-warning"><i class="bi bi-star-fill"></i> @Model.AverageRating.ToString("0.0") (@Model.ReviewCount)</small>
+            }
+        </div>
+    </a>
+</div>

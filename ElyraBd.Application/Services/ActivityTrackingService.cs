@@ -2,7 +2,6 @@ using ElyraBd.Application.Interfaces;
 using ElyraBd.Core.Entities;
 using ElyraBd.Core.Enums;
 using ElyraBd.Core.Interfaces;
-using Microsoft.EntityFrameworkCore;
 
 namespace ElyraBd.Application.Services;
 
