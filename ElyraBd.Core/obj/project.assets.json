@@ -559,7 +559,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\User\\AppData\\Local\\Temp\\cursor-sandbox-cache\\b6eee2267cbe8bd21163f3a308634039\\nuget": {},
+    "C:\\Users\\User\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
@@ -568,7 +568,7 @@
       "projectUniqueName": "E:\\ElyraBD\\ElyraBd.Core\\ElyraBd.Core.csproj",
       "projectName": "ElyraBd.Core",
       "projectPath": "E:\\ElyraBD\\ElyraBd.Core\\ElyraBd.Core.csproj",
-      "packagesPath": "C:\\Users\\User\\AppData\\Local\\Temp\\cursor-sandbox-cache\\b6eee2267cbe8bd21163f3a308634039\\nuget",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
       "outputPath": "E:\\ElyraBD\\ElyraBd.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
@@ -603,7 +603,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "10.0.200"
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "net8.0": {
@@ -630,7 +630,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.203/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.313/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
