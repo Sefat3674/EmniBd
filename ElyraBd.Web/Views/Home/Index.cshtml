@@ -1,0 +1,132 @@
+﻿@{
+    ViewData["Title"] = "Home";
+    var isSignedIn = User.Identity?.IsAuthenticated == true;
+}
+
+<section class="hero-section">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="container hero-content">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="hero-badge">
+                    <i class="bi bi-stars"></i>
+                    New arrivals every week
+                </div>
+                <h1 class="hero-title">
+                    Your favorite<br />
+                    <span class="gradient-text">marketplace</span><br />
+                    in Bangladesh
+                </h1>
+                <p class="hero-lead">
+                    Discover curated products, secure checkout, and fast delivery — crafted for a premium shopping experience.
+                </p>
+                <div class="hero-actions">
+                    @if (isSignedIn)
+                    {
+                        <div class="hero-signed-in">
+                            <i class="bi bi-check-circle-fill fs-5"></i>
+                            Welcome back, <strong>@User.Identity!.Name</strong>
+                        </div>
+                    }
+                    else
+                    {
+                        <a asp-controller="Account" asp-action="Register" class="btn-hero-primary">
+                            Get started free <i class="bi bi-arrow-right ms-2"></i>
+                        </a>
+                        <a asp-controller="Account" asp-action="Login" class="btn-hero-outline">
+                            <i class="bi bi-box-arrow-in-right me-2"></i>Sign in
+                        </a>
+                    }
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="hero-visual">
+                    <div class="hero-card-stack">
+                        <div class="hero-float-card main">
+                            <p class="small text-white-50 mb-3 mb-lg-4 text-uppercase fw-semibold" style="letter-spacing: 0.06em;">Trending now</p>
+                            <div class="hero-product-row">
+                                <div class="hero-product-thumb"><i class="bi bi-phone"></i></div>
+                                <div>
+                                    <div class="fw-semibold">Wireless Earbuds Pro</div>
+                                    <small class="text-white-50">৳ 2,499 · Free delivery</small>
+                                </div>
+                            </div>
+                            <div class="hero-product-row">
+                                <div class="hero-product-thumb"><i class="bi bi-watch"></i></div>
+                                <div>
+                                    <div class="fw-semibold">Smart Watch Series</div>
+                                    <small class="text-white-50">৳ 4,999 · 4.8 ★ rating</small>
+                                </div>
+                            </div>
+                            <div class="hero-product-row">
+                                <div class="hero-product-thumb"><i class="bi bi-bag-heart"></i></div>
+                                <div>
+                                    <div class="fw-semibold">Premium Leather Bag</div>
+                                    <small class="text-white-50">৳ 3,299 · Best seller</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hero-float-card mini">
+                            <div class="d-flex align-items-center gap-2">
+                                <i class="bi bi-truck text-info fs-4"></i>
+                                <div>
+                                    <div class="fw-bold small">Order shipped</div>
+                                    <small class="text-white-50">Arrives in 2–3 days</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="features-section">
+    <div class="container text-center">
+        <span class="section-label">Why ElyraBd</span>
+        <h2 class="section-title">Built for modern shoppers</h2>
+        <p class="section-subtitle">
+            Everything you need for a seamless online shopping journey — from browse to doorstep.
+        </p>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="bi bi-shield-lock-fill"></i></div>
+                    <h3>Secure payments</h3>
+                    <p>Your data and transactions are protected with industry-standard encryption.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="bi bi-truck"></i></div>
+                    <h3>Fast delivery</h3>
+                    <p>Reliable shipping across Bangladesh with real-time order tracking.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="bi bi-patch-check-fill"></i></div>
+                    <h3>Trusted quality</h3>
+                    <p>Verified sellers, authentic products, and honest customer reviews.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@if (!isSignedIn)
+{
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-box">
+                <h2>Ready to start shopping?</h2>
+                <p>Join thousands of happy customers on ElyraBd today — it's free.</p>
+                <a asp-controller="Account" asp-action="Register" class="btn-hero-primary">
+                    Create your account <i class="bi bi-arrow-right ms-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+}

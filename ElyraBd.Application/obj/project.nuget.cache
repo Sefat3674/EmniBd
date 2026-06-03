@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "dgSpecHash": "RJrCWVg3I0A=",
+  "success": true,
+  "projectFilePath": "E:\\ElyraBD\\ElyraBd.Application\\ElyraBd.Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\User\\AppData\\Local\\Temp\\cursor-sandbox-cache\\b6eee2267cbe8bd21163f3a308634039\\nuget\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\User\\AppData\\Local\\Temp\\cursor-sandbox-cache\\b6eee2267cbe8bd21163f3a308634039\\nuget\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
+    "C:\\Users\\User\\AppData\\Local\\Temp\\cursor-sandbox-cache\\b6eee2267cbe8bd21163f3a308634039\\nuget\\fluentvalidation\\11.11.0\\fluentvalidation.11.11.0.nupkg.sha512",
+    "C:\\Users\\User\\AppData\\Local\\Temp\\cursor-sandbox-cache\\b6eee2267cbe8bd21163f3a308634039\\nuget\\fluentvalidation.dependencyinjectionextensions\\11.11.0\\fluentvalidation.dependencyinjectionextensions.11.11.0.nupkg.sha512",
+    "C:\\Users\\User\\AppData\\Local\\Temp\\cursor-sandbox-cache\\b6eee2267cbe8bd21163f3a308634039\\nuget\\microsoft.aspnetcore.cryptography.internal\\8.0.11\\microsoft.aspnetcore.cryptography.internal.8.0.11.nupkg.sha512",
+    "C:\\Users\\User\\AppData\\Local\\Temp\\cursor-sandbox-cache\\b6eee2267cbe8bd21163f3a308634039\\nuget\\microsoft.aspnetcore.cryptography.keyderivation\\8.0.11\\microsoft.aspnetcore.cryptography.keyderivation.8.0.11.nupkg.sha512",
+    "C:\\Users\\User\\AppData\\Local\\Temp\\cursor-sandbox-cache\\b6eee2267cbe8bd21163f3a308634039\\nuget\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\User\\AppData\\Local\\Temp\\cursor-sandbox-cache\\b6eee2267cbe8bd21163f3a308634039\\nuget\\microsoft.extensions.caching.abstractions\\8.0.0\\microsoft.extensions.caching.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\User\\AppData\\Local\\Temp\\cursor-sandbox-cache\\b6eee2267cbe8bd21163f3a308634039\\nuget\\microsoft.extensions.dependencyinjection\\8.0.1\\microsoft.extensions.dependencyinjection.8.0.1.nupkg.sha512",
+    "C:\\Users\\User\\AppData\\Local\\Temp\\cursor-sandbox-cache\\b6eee2267cbe8bd21163f3a308634039\\nuget\\microsoft.extensions.dependencyinjection.abstractions\\8.0.2\\microsoft.extensions.dependencyinjection.abstractions.8.0.2.nupkg.sha512",
+    "C:\\Users\\User\\AppData\\Local\\Temp\\cursor-sandbox-cache\\b6eee2267cbe8bd21163f3a308634039\\nuget\\microsoft.extensions.identity.core\\8.0.11\\microsoft.extensions.identity.core.8.0.11.nupkg.sha512",
+    "C:\\Users\\User\\AppData\\Local\\Temp\\cursor-sandbox-cache\\b6eee2267cbe8bd21163f3a308634039\\nuget\\microsoft.extensions.identity.stores\\8.0.11\\microsoft.extensions.identity.stores.8.0.11.nupkg.sha512",
+    "C:\\Users\\User\\AppData\\Local\\Temp\\cursor-sandbox-cache\\b6eee2267cbe8bd21163f3a308634039\\nuget\\microsoft.extensions.logging\\8.0.1\\microsoft.extensions.logging.8.0.1.nupkg.sha512",
+    "C:\\Users\\User\\AppData\\Local\\Temp\\cursor-sandbox-cache\\b6eee2267cbe8bd21163f3a308634039\\nuget\\microsoft.extensions.logging.abstractions\\8.0.2\\microsoft.extensions.logging.abstractions.8.0.2.nupkg.sha512",
+    "C:\\Users\\User\\AppData\\Local\\Temp\\cursor-sandbox-cache\\b6eee2267cbe8bd21163f3a308634039\\nuget\\microsoft.extensions.options\\8.0.2\\microsoft.extensions.options.8.0.2.nupkg.sha512",
+    "C:\\Users\\User\\AppData\\Local\\Temp\\cursor-sandbox-cache\\b6eee2267cbe8bd21163f3a308634039\\nuget\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,74 @@
+@model ElyraBd.Web.ViewModels.Account.LoginViewModel
+@{
+    ViewData["Title"] = "Sign in";
+    Layout = "_AuthLayout";
+}
+
+<div class="auth-mobile-logo">
+    <a asp-controller="Home" asp-action="Index" class="auth-logo text-decoration-none d-inline-flex">
+        <span class="auth-logo-mark">E</span>
+        <span class="auth-logo-text">Elyra<span class="auth-logo-accent">Bd</span></span>
+    </a>
+</div>
+
+<partial name="_AuthMobileCategories" />
+
+<div class="auth-card">
+    <div class="auth-card-header">
+        <div class="auth-card-icon">
+            <i class="bi bi-person-check-fill"></i>
+        </div>
+        <h2>Welcome back</h2>
+        <p>Sign in to continue your shopping journey</p>
+    </div>
+
+    <form asp-action="Login" method="post" class="auth-form" novalidate>
+        @Html.AntiForgeryToken()
+        <input type="hidden" asp-for="ReturnUrl" />
+
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger auth-alert auth-validation-summary" role="alert"></div>
+
+        <div class="mb-3">
+            <label asp-for="Email" class="form-label"></label>
+            <div class="auth-input-group">
+                <i class="bi bi-envelope auth-input-icon"></i>
+                <input asp-for="Email" class="form-control" placeholder="you@example.com" autocomplete="email" />
+            </div>
+            <span asp-validation-for="Email" class="field-validation-error"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Password" class="form-label"></label>
+            <div class="auth-input-group">
+                <i class="bi bi-lock-fill auth-input-icon"></i>
+                <input asp-for="Password" id="loginPassword" class="form-control has-toggle" placeholder="Enter your password" autocomplete="current-password" />
+                <button type="button" class="auth-password-toggle" data-toggle-password data-target="#loginPassword" aria-label="Show password">
+                    <i class="bi bi-eye-slash"></i>
+                </button>
+            </div>
+            <span asp-validation-for="Password" class="field-validation-error"></span>
+        </div>
+
+        <div class="auth-remember">
+            <div class="form-check">
+                <input asp-for="RememberMe" class="form-check-input" />
+                <label asp-for="RememberMe" class="form-check-label"></label>
+            </div>
+        </div>
+
+        <button type="submit" class="btn auth-btn-primary">
+            Sign in to ElyraBd
+            <i class="bi bi-arrow-right ms-2"></i>
+        </button>
+
+        <div class="auth-trust-row">
+            <span class="auth-trust-item"><i class="bi bi-shield-check"></i> SSL Secured</span>
+            <span class="auth-trust-item"><i class="bi bi-lock-fill"></i> Encrypted</span>
+        </div>
+    </form>
+
+    <p class="auth-switch">
+        Don't have an account?
+        <a asp-action="Register" asp-route-returnUrl="@Model.ReturnUrl">Create one free</a>
+    </p>
+</div>

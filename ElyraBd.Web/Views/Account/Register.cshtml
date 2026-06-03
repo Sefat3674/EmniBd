@@ -1,0 +1,97 @@
+@model ElyraBd.Web.ViewModels.Account.RegisterViewModel
+@{
+    ViewData["Title"] = "Create account";
+    Layout = "_AuthLayout";
+}
+
+<div class="auth-mobile-logo">
+    <a asp-controller="Home" asp-action="Index" class="auth-logo text-decoration-none d-inline-flex">
+        <span class="auth-logo-mark">E</span>
+        <span class="auth-logo-text">Elyra<span class="auth-logo-accent">Bd</span></span>
+    </a>
+</div>
+
+<partial name="_AuthMobileCategories" />
+
+<div class="auth-card">
+    <div class="auth-card-header">
+        <div class="auth-card-icon">
+            <i class="bi bi-bag-heart-fill"></i>
+        </div>
+        <h2>Join ElyraBd</h2>
+        <p>Create your free account in under a minute</p>
+    </div>
+
+    <form asp-action="Register" method="post" class="auth-form" novalidate>
+        @Html.AntiForgeryToken()
+        <input type="hidden" asp-for="ReturnUrl" />
+
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger auth-alert auth-validation-summary" role="alert"></div>
+
+        <div class="mb-3">
+            <label asp-for="FullName" class="form-label"></label>
+            <div class="auth-input-group">
+                <i class="bi bi-person-fill auth-input-icon"></i>
+                <input asp-for="FullName" class="form-control" placeholder="Your full name" autocomplete="name" />
+            </div>
+            <span asp-validation-for="FullName" class="field-validation-error"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Email" class="form-label"></label>
+            <div class="auth-input-group">
+                <i class="bi bi-envelope auth-input-icon"></i>
+                <input asp-for="Email" class="form-control" placeholder="you@example.com" autocomplete="email" />
+            </div>
+            <span asp-validation-for="Email" class="field-validation-error"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="PhoneNumber" class="form-label"></label>
+            <div class="auth-input-group">
+                <i class="bi bi-telephone-fill auth-input-icon"></i>
+                <input asp-for="PhoneNumber" class="form-control" placeholder="+880 1XXX XXXXXX" autocomplete="tel" />
+            </div>
+            <span asp-validation-for="PhoneNumber" class="field-validation-error"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Password" class="form-label"></label>
+            <div class="auth-input-group">
+                <i class="bi bi-lock-fill auth-input-icon"></i>
+                <input asp-for="Password" id="registerPassword" class="form-control has-toggle" placeholder="Min. 8 characters" autocomplete="new-password" />
+                <button type="button" class="auth-password-toggle" data-toggle-password data-target="#registerPassword" aria-label="Show password">
+                    <i class="bi bi-eye-slash"></i>
+                </button>
+            </div>
+            <span asp-validation-for="Password" class="field-validation-error"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="ConfirmPassword" class="form-label"></label>
+            <div class="auth-input-group">
+                <i class="bi bi-shield-lock-fill auth-input-icon"></i>
+                <input asp-for="ConfirmPassword" id="confirmPassword" class="form-control has-toggle" placeholder="Repeat password" autocomplete="new-password" />
+                <button type="button" class="auth-password-toggle" data-toggle-password data-target="#confirmPassword" aria-label="Show password">
+                    <i class="bi bi-eye-slash"></i>
+                </button>
+            </div>
+            <span asp-validation-for="ConfirmPassword" class="field-validation-error"></span>
+        </div>
+
+        <button type="submit" class="btn auth-btn-primary">
+            Create my account
+            <i class="bi bi-arrow-right ms-2"></i>
+        </button>
+
+        <div class="auth-trust-row">
+            <span class="auth-trust-item"><i class="bi bi-shield-check"></i> No spam</span>
+            <span class="auth-trust-item"><i class="bi bi-gift"></i> Free forever</span>
+        </div>
+    </form>
+
+    <p class="auth-switch">
+        Already have an account?
+        <a asp-action="Login" asp-route-returnUrl="@Model.ReturnUrl">Sign in</a>
+    </p>
+</div>

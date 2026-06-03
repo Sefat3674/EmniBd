@@ -1,0 +1,15 @@
+E:\ElyraBD\ElyraBd.Application\bin\Debug\net8.0\ElyraBd.Application.deps.json
+E:\ElyraBD\ElyraBd.Application\bin\Debug\net8.0\ElyraBd.Application.dll
+E:\ElyraBD\ElyraBd.Application\bin\Debug\net8.0\ElyraBd.Application.pdb
+E:\ElyraBD\ElyraBd.Application\bin\Debug\net8.0\ElyraBd.Core.dll
+E:\ElyraBD\ElyraBd.Application\bin\Debug\net8.0\ElyraBd.Core.pdb
+E:\ElyraBD\ElyraBd.Application\obj\Debug\net8.0\ElyraBd.Application.csproj.AssemblyReference.cache
+E:\ElyraBD\ElyraBd.Application\obj\Debug\net8.0\ElyraBd.Application.GeneratedMSBuildEditorConfig.editorconfig
+E:\ElyraBD\ElyraBd.Application\obj\Debug\net8.0\ElyraBd.Application.AssemblyInfoInputs.cache
+E:\ElyraBD\ElyraBd.Application\obj\Debug\net8.0\ElyraBd.Application.AssemblyInfo.cs
+E:\ElyraBD\ElyraBd.Application\obj\Debug\net8.0\ElyraBd.Application.csproj.CoreCompileInputs.cache
+E:\ElyraBD\ElyraBd.Application\obj\Debug\net8.0\ElyraBd..BAE4E6A6.Up2Date
+E:\ElyraBD\ElyraBd.Application\obj\Debug\net8.0\ElyraBd.Application.dll
+E:\ElyraBD\ElyraBd.Application\obj\Debug\net8.0\refint\ElyraBd.Application.dll
+E:\ElyraBD\ElyraBd.Application\obj\Debug\net8.0\ElyraBd.Application.pdb
+E:\ElyraBD\ElyraBd.Application\obj\Debug\net8.0\ref\ElyraBd.Application.dll

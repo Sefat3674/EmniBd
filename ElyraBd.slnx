@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="ElyraBd.Application/ElyraBd.Application.csproj" />
+  <Project Path="ElyraBd.Core/ElyraBd.Core.csproj" />
+  <Project Path="ElyraBd.Infrastructure/ElyraBd.Infrastructure.csproj" />
+  <Project Path="ElyraBd.Web/ElyraBd.Web.csproj" />
+</Solution>
