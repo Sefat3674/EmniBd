@@ -5,6 +5,7 @@ wwwroot\css\site.css
 wwwroot\favicon.ico
 wwwroot\js\admin.js
 wwwroot\js\auth.js
+wwwroot\js\order-tracking.js
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css
 wwwroot\lib\bootstrap\dist\css\bootstrap.css.map
@@ -63,3 +64,5 @@ wwwroot\lib\jquery-validation\LICENSE.md
 wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js
 wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js
 wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt
+wwwroot\uploads\products\407b453b5542475fa722ee61c2d97c89.jpg
+wwwroot\uploads\products\bd1013c9172c480889e4a79dd19f6d1b.png

@@ -15,4 +15,5 @@ public class ApplicationUser : IdentityUser
     public ICollection<ShippingAddress> ShippingAddresses { get; set; } = new List<ShippingAddress>();
     public ICollection<UserActivity> Activities { get; set; } = new List<UserActivity>();
     public ICollection<ProductViewHistory> ProductViews { get; set; } = new List<ProductViewHistory>();
+    public ICollection<Notification> Notifications { get; set; } = new List<Notification>();
 }

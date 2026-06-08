@@ -158,5 +158,5 @@ E:\ElyraBD\ElyraBd.Web\bin\Debug\net8.0\AutoMapper.dll
 E:\ElyraBD\ElyraBd.Web\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 E:\ElyraBD\ElyraBd.Web\bin\Debug\net8.0\FluentValidation.dll
 E:\ElyraBD\ElyraBd.Web\bin\Debug\net8.0\FluentValidation.DependencyInjectionExtensions.dll
-E:\ElyraBD\ElyraBd.Web\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 E:\ElyraBD\ElyraBd.Web\obj\Debug\net8.0\ElyraBd.Web.sourcelink.json
+E:\ElyraBD\ElyraBd.Web\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

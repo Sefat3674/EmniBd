@@ -1,0 +1,113 @@
+@model CheckoutSummaryDto
+@{
+    ViewData["Title"] = "Checkout";
+}
+<link rel="stylesheet" href="~/css/shop.css" asp-append-version="true" />
+
+<div class="container py-4">
+    <h1 class="fw-bold mb-4">Checkout</h1>
+
+    @if (TempData["CheckoutError"] is string checkoutError)
+    {
+        <div class="alert alert-danger">@checkoutError</div>
+    }
+
+    <div class="row g-4">
+        <div class="col-lg-7">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <h5 class="fw-bold mb-3"><i class="bi bi-geo-alt"></i> Delivery details</h5>
+                    <form asp-controller="Checkout" asp-action="PlaceOrder" method="post">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="CouponCode" value="@ViewBag.CouponCode" />
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Full name *</label>
+                                <input type="text" name="FullName" class="form-control" required />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Phone number *</label>
+                                <input type="tel" name="Phone" class="form-control" placeholder="01XXXXXXXXX" required />
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Delivery address *</label>
+                                <textarea name="AddressLine" class="form-control" rows="2" required></textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">City *</label>
+                                <input type="text" name="City" class="form-control" required />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Postal code</label>
+                                <input type="text" name="PostalCode" class="form-control" />
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Payment method</label>
+                                <select name="PaymentMethod" class="form-select">
+                                    <option value="0">Cash on Delivery</option>
+                                    <option value="2">Mobile Banking (bKash/Nagad)</option>
+                                    <option value="1">Card</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg w-100 mt-4">
+                            <i class="bi bi-bag-check"></i> Place order
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-5">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <h5 class="fw-bold mb-3">Order summary</h5>
+                    @foreach (var item in Model.Cart.Items)
+                    {
+                        <div class="d-flex justify-content-between small mb-2">
+                            <span>@item.ProductName × @item.Quantity</span>
+                            <span>৳@item.LineTotal.ToString("N2")</span>
+                        </div>
+                    }
+                    <hr />
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Subtotal</span>
+                        <span>৳@Model.Cart.SubTotal.ToString("N2")</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Delivery</span>
+                        <span>
+                            @if (Model.IsFreeDelivery)
+                            {
+                                <span class="text-success">FREE</span>
+                            }
+                            else
+                            {
+                                @($"৳{Model.DeliveryCharge:N2}")
+                            }
+                        </span>
+                    </div>
+                    @if (Model.DiscountAmount > 0)
+                    {
+                        <div class="d-flex justify-content-between mb-2 text-success">
+                            <span>Coupon (@Model.AppliedCouponCode)</span>
+                            <span>-৳@Model.DiscountAmount.ToString("N2")</span>
+                        </div>
+                    }
+                    <div class="d-flex justify-content-between fw-bold fs-5 mt-3">
+                        <span>Total</span>
+                        <span class="text-primary">৳@Model.TotalAmount.ToString("N2")</span>
+                    </div>
+
+                    <form asp-controller="Checkout" asp-action="Index" method="get" class="mt-4">
+                        <label class="form-label small">Coupon code</label>
+                        <div class="input-group">
+                            <input type="text" name="coupon" class="form-control" placeholder="Enter code" value="@ViewBag.CouponCode" />
+                            <button type="submit" class="btn btn-outline-secondary">Apply</button>
+                        </div>
+                        <small class="text-muted">Try WELCOME10 or FLAT100</small>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

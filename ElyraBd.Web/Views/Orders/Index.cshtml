@@ -1,0 +1,63 @@
+@model IReadOnlyList<OrderSummaryDto>
+@using ElyraBd.Core.Enums
+@{
+    ViewData["Title"] = "My Orders";
+}
+<link rel="stylesheet" href="~/css/shop.css" asp-append-version="true" />
+
+<div class="container py-4">
+    <h1 class="fw-bold mb-4">My Orders</h1>
+
+    @if (!Model.Any())
+    {
+        <div class="text-center py-5">
+            <i class="bi bi-bag display-1 text-secondary"></i>
+            <p class="text-muted mt-3">You haven't placed any orders yet.</p>
+            <a asp-controller="Shop" asp-action="Index" class="btn btn-primary">Start shopping</a>
+        </div>
+    }
+    else
+    {
+        <div class="table-responsive">
+            <table class="table align-middle">
+                <thead>
+                    <tr>
+                        <th>Order</th>
+                        <th>Date</th>
+                        <th>Items</th>
+                        <th>Total</th>
+                        <th>Status</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var order in Model)
+                    {
+                        <tr>
+                            <td class="fw-semibold">@order.OrderNumber</td>
+                            <td>@order.OrderDate.ToLocalTime().ToString("dd MMM yyyy")</td>
+                            <td>@order.ItemCount</td>
+                            <td>৳@order.TotalAmount.ToString("N2")</td>
+                            <td><span class="badge @GetStatusBadge(order.Status)">@order.Status</span></td>
+                            <td class="text-end">
+                                <a asp-action="Details" asp-route-id="@order.Id" class="btn btn-sm btn-outline-primary">Track</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>
+
+@functions {
+    string GetStatusBadge(OrderStatus status) => status switch
+    {
+        OrderStatus.Delivered => "bg-success",
+        OrderStatus.Shipped => "bg-info text-dark",
+        OrderStatus.Packed => "bg-primary",
+        OrderStatus.Processing => "bg-warning text-dark",
+        OrderStatus.Cancelled => "bg-secondary",
+        _ => "bg-secondary"
+    };
+}

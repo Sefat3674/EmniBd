@@ -15,6 +15,10 @@ public class UnitOfWork : IUnitOfWork
 
     public IProductRepository Products => GetCustom<IProductRepository, ProductRepository>();
     public ICategoryRepository Categories => GetCustom<ICategoryRepository, CategoryRepository>();
+    public ICartRepository Carts => GetCustom<ICartRepository, CartRepository>();
+    public IOrderRepository Orders => GetCustom<IOrderRepository, OrderRepository>();
+    public INotificationRepository Notifications => GetCustom<INotificationRepository, NotificationRepository>();
+    public ICouponRepository Coupons => GetCustom<ICouponRepository, CouponRepository>();
     public IUserActivityRepository UserActivities => GetCustom<IUserActivityRepository, UserActivityRepository>();
 
     public IGenericRepository<T> Repository<T>() where T : BaseEntity =>

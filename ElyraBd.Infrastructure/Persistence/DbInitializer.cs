@@ -34,6 +34,7 @@ public static class DbInitializer
         await SeedRolesAsync(roleManager, logger);
         await SeedAdminAsync(userManager, configuration, logger);
         await SeedCategoriesAsync(context, logger);
+        await SeedCouponsAsync(context, logger);
         //await SeedSampleProductsAsync(context, logger);
     }
 
@@ -105,6 +106,37 @@ public static class DbInitializer
         context.Categories.AddRange(categories);
         await context.SaveChangesAsync();
         logger.LogInformation("Seeded {Count} categories", categories.Length);
+    }
+
+    private static async Task SeedCouponsAsync(ApplicationDbContext context, ILogger logger)
+    {
+        if (await context.Coupons.AnyAsync())
+            return;
+
+        context.Coupons.AddRange(
+            new Coupon
+            {
+                Code = "WELCOME10",
+                Description = "10% off your first order",
+                DiscountPercent = 10,
+                MinOrderAmount = 500,
+                MaxUses = 1000,
+                IsActive = true,
+                ExpiresAt = DateTime.UtcNow.AddYears(1)
+            },
+            new Coupon
+            {
+                Code = "FLAT100",
+                Description = "৳100 off orders over ৳1500",
+                DiscountAmount = 100,
+                MinOrderAmount = 1500,
+                MaxUses = 500,
+                IsActive = true,
+                ExpiresAt = DateTime.UtcNow.AddYears(1)
+            });
+
+        await context.SaveChangesAsync();
+        logger.LogInformation("Seeded sample coupons");
     }
 
     //private static async Task SeedSampleProductsAsync(ApplicationDbContext context, ILogger logger)

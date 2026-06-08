@@ -28,6 +28,9 @@
             <a asp-area="Admin" asp-controller="Customers" asp-action="Index" class="admin-nav-link">
                 <i class="bi bi-people"></i> Customers
             </a>
+            <a asp-area="Admin" asp-controller="Orders" asp-action="Index" class="admin-nav-link">
+                <i class="bi bi-bag-check"></i> Orders
+            </a>
             <hr class="admin-nav-divider" />
             <a asp-area="" asp-controller="Shop" asp-action="Index" class="admin-nav-link">
                 <i class="bi bi-shop"></i> View Store
@@ -52,6 +55,13 @@
             {
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     @success
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            }
+            @if (TempData["Error"] is string error)
+            {
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    @error
                     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                 </div>
             }

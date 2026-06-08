@@ -24,6 +24,9 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     public DbSet<ProductOffer> ProductOffers => Set<ProductOffer>();
     public DbSet<UserActivity> UserActivities => Set<UserActivity>();
     public DbSet<ProductViewHistory> ProductViewHistories => Set<ProductViewHistory>();
+    public DbSet<Notification> Notifications => Set<Notification>();
+    public DbSet<Coupon> Coupons => Set<Coupon>();
+    public DbSet<OrderStatusHistory> OrderStatusHistories => Set<OrderStatusHistory>();
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

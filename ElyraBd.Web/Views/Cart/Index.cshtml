@@ -1,0 +1,89 @@
+@model CartDto?
+@{
+    ViewData["Title"] = "Your Cart";
+}
+<link rel="stylesheet" href="~/css/shop.css" asp-append-version="true" />
+
+<div class="container py-4">
+    <h1 class="fw-bold mb-4">Your Cart</h1>
+
+    @if (TempData["CartSuccess"] is string success)
+    {
+        <div class="alert alert-success">@success</div>
+    }
+    @if (TempData["CartError"] is string error)
+    {
+        <div class="alert alert-danger">@error</div>
+    }
+
+    @if (Model is null || !Model.Items.Any())
+    {
+        <div class="text-center py-5">
+            <i class="bi bi-cart display-1 text-secondary"></i>
+            <p class="text-muted mt-3">Your cart is empty.</p>
+            <a asp-controller="Shop" asp-action="Index" class="btn btn-primary">Browse products</a>
+        </div>
+    }
+    else
+    {
+        <div class="table-responsive">
+            <table class="table align-middle">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th class="text-center">Price</th>
+                        <th class="text-center">Qty</th>
+                        <th class="text-end">Total</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Items)
+                    {
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center gap-3">
+                                    @if (!string.IsNullOrEmpty(item.ProductImageUrl))
+                                    {
+                                        <img src="@item.ProductImageUrl" alt="@item.ProductName" style="width: 56px; height: 56px; object-fit: cover; border-radius: 8px;" />
+                                    }
+                                    <span class="fw-semibold">@item.ProductName</span>
+                                </div>
+                            </td>
+                            <td class="text-center">৳@item.UnitPrice.ToString("N2")</td>
+                            <td class="text-center">
+                                <form asp-action="Update" method="post" class="d-inline-flex align-items-center gap-1">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="CartItemId" value="@item.Id" />
+                                    <input type="number" name="Quantity" value="@item.Quantity" min="1" class="form-control form-control-sm" style="width: 4rem;" />
+                                    <button type="submit" class="btn btn-sm btn-outline-primary" title="Update"><i class="bi bi-arrow-repeat"></i></button>
+                                </form>
+                            </td>
+                            <td class="text-end fw-semibold">৳@item.LineTotal.ToString("N2")</td>
+                            <td class="text-end">
+                                <form asp-action="Remove" method="post" class="d-inline">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="cartItemId" value="@item.Id" />
+                                    <button type="submit" class="btn btn-sm btn-outline-danger" title="Remove"><i class="bi bi-trash"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3" class="text-end fw-bold">Subtotal (@Model.TotalItems items)</td>
+                        <td class="text-end fw-bold fs-5 text-primary">৳@Model.SubTotal.ToString("N2")</td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <div class="d-flex justify-content-between mt-3">
+            <a asp-controller="Shop" asp-action="Index" class="btn btn-outline-secondary">← Continue shopping</a>
+            <a asp-controller="Checkout" asp-action="Index" class="btn btn-primary btn-lg">
+                Proceed to checkout <i class="bi bi-arrow-right ms-1"></i>
+            </a>
+        </div>
+    }
+</div>

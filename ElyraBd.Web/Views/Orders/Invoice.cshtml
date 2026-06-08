@@ -1,0 +1,78 @@
+@model OrderDetailDto
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Invoice — @Model.OrderNumber</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; padding: 2rem; }
+        @@media print { .no-print { display: none; } }
+    </style>
+</head>
+<body>
+    <div class="no-print mb-3">
+        <button onclick="window.print()" class="btn btn-primary">Print invoice</button>
+    </div>
+    <div class="container">
+        <div class="d-flex justify-content-between mb-4">
+            <div>
+                <h2 class="fw-bold">EmniBd</h2>
+                <p class="text-muted mb-0">Invoice</p>
+            </div>
+            <div class="text-end">
+                <h4>@Model.OrderNumber</h4>
+                <p class="mb-0">@Model.OrderDate.ToLocalTime().ToString("dd MMM yyyy")</p>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-6">
+                <h6>Bill to</h6>
+                <p class="mb-0"><strong>@Model.CustomerName</strong></p>
+                <p class="mb-0">@Model.CustomerPhone</p>
+                <p class="mb-0">@Model.AddressLine</p>
+                <p class="mb-0">@Model.City, @Model.PostalCode</p>
+            </div>
+            <div class="col-6 text-end">
+                <h6>Status</h6>
+                <p class="mb-0">@Model.Status</p>
+                <p class="mb-0">@Model.PaymentMethod — @Model.PaymentStatus</p>
+            </div>
+        </div>
+        <table class="table table-bordered">
+            <thead class="table-light">
+                <tr>
+                    <th>Product</th>
+                    <th class="text-center">Qty</th>
+                    <th class="text-end">Unit price</th>
+                    <th class="text-end">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Items)
+                {
+                    <tr>
+                        <td>@item.ProductName</td>
+                        <td class="text-center">@item.Quantity</td>
+                        <td class="text-end">৳@item.UnitPrice.ToString("N2")</td>
+                        <td class="text-end">৳@item.LineTotal.ToString("N2")</td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr><td colspan="3" class="text-end">Subtotal</td><td class="text-end">৳@Model.SubTotal.ToString("N2")</td></tr>
+                <tr><td colspan="3" class="text-end">Delivery</td><td class="text-end">৳@Model.DeliveryCharge.ToString("N2")</td></tr>
+                @if (Model.DiscountAmount > 0)
+                {
+                    <tr><td colspan="3" class="text-end">Discount (@Model.CouponCode)</td><td class="text-end text-success">-৳@Model.DiscountAmount.ToString("N2")</td></tr>
+                }
+                <tr class="fw-bold"><td colspan="3" class="text-end">Grand total</td><td class="text-end">৳@Model.TotalAmount.ToString("N2")</td></tr>
+            </tfoot>
+        </table>
+        <p class="text-muted small mt-4">Thank you for shopping with EmniBd.</p>
+    </div>
+</body>
+</html>

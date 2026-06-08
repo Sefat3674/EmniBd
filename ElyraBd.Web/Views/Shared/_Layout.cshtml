@@ -39,6 +39,22 @@
                     <ul class="navbar-nav align-items-lg-center gap-lg-2">
                         @if (User.Identity?.IsAuthenticated == true)
                         {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Cart" asp-action="Index" title="Your cart">
+                                    <i class="bi bi-cart3"></i> Cart
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Orders" asp-action="Index" title="My orders">
+                                    <i class="bi bi-bag"></i> Orders
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link position-relative" asp-controller="Notifications" asp-action="Index" title="Notifications" id="navNotifications">
+                                    <i class="bi bi-bell"></i>
+                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none" id="notificationBadge">0</span>
+                                </a>
+                            </li>
                             <li class="nav-item d-none d-lg-block">
                                 <span class="elyra-user-pill">
                                     <i class="bi bi-person-circle"></i>
@@ -94,6 +110,15 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    @if (User.Identity?.IsAuthenticated == true)
+    {
+        <script>
+            fetch('/Notifications/UnreadCount').then(r => r.json()).then(d => {
+                const b = document.getElementById('notificationBadge');
+                if (b && d.count > 0) { b.textContent = d.count; b.classList.remove('d-none'); }
+            });
+        </script>
+    }
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
