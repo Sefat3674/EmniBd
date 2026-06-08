@@ -13,3 +13,4 @@ E:\ElyraBD\ElyraBd.Application\obj\Debug\net8.0\ElyraBd.Application.dll
 E:\ElyraBD\ElyraBd.Application\obj\Debug\net8.0\refint\ElyraBd.Application.dll
 E:\ElyraBD\ElyraBd.Application\obj\Debug\net8.0\ElyraBd.Application.pdb
 E:\ElyraBD\ElyraBd.Application\obj\Debug\net8.0\ref\ElyraBd.Application.dll
+E:\ElyraBD\ElyraBd.Application\obj\Debug\net8.0\ElyraBd.Application.sourcelink.json

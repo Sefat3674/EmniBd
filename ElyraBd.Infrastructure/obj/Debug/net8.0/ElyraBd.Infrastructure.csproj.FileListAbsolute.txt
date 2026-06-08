@@ -17,3 +17,4 @@ E:\ElyraBD\ElyraBd.Infrastructure\obj\Debug\net8.0\refint\ElyraBd.Infrastructure
 E:\ElyraBD\ElyraBd.Infrastructure\obj\Debug\net8.0\ElyraBd.Infrastructure.pdb
 E:\ElyraBD\ElyraBd.Infrastructure\obj\Debug\net8.0\ElyraBd.Infrastructure.genruntimeconfig.cache
 E:\ElyraBD\ElyraBd.Infrastructure\obj\Debug\net8.0\ref\ElyraBd.Infrastructure.dll
+E:\ElyraBD\ElyraBd.Infrastructure\obj\Debug\net8.0\ElyraBd.Infrastructure.sourcelink.json

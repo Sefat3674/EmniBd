@@ -10,3 +10,4 @@ E:\ElyraBD\ElyraBd.Core\obj\Debug\net8.0\ElyraBd.Core.dll
 E:\ElyraBD\ElyraBd.Core\obj\Debug\net8.0\refint\ElyraBd.Core.dll
 E:\ElyraBD\ElyraBd.Core\obj\Debug\net8.0\ElyraBd.Core.pdb
 E:\ElyraBD\ElyraBd.Core\obj\Debug\net8.0\ref\ElyraBd.Core.dll
+E:\ElyraBD\ElyraBd.Core\obj\Debug\net8.0\ElyraBd.Core.sourcelink.json
