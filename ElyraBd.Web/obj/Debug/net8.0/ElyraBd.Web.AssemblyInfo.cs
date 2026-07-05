@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ElyraBd.Web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fadc09f433134184213c9ce60b91131a2a1ae4bf")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9e38da9408d051f896128ea471773a1d8eb9a6e8")]
 [assembly: System.Reflection.AssemblyProductAttribute("ElyraBd.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ElyraBd.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

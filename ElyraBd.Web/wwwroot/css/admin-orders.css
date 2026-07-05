@@ -395,3 +395,103 @@
     text-transform: uppercase;
     flex-shrink: 0;
 }
+
+/* ── Admin table action buttons (Edit / Delete) ── */
+
+.admin-action-group {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: flex-end;
+}
+
+.admin-action-form {
+    display: inline-flex;
+    margin: 0;
+}
+
+.admin-action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    padding: 0.4rem 0.85rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    line-height: 1.2;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.admin-action-btn i {
+    font-size: 0.9rem;
+}
+
+.admin-action-btn--edit {
+    color: #4338ca;
+    background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+    border-color: #c7d2fe;
+    box-shadow: 0 1px 2px rgba(99, 102, 241, 0.12);
+}
+
+.admin-action-btn--edit:hover {
+    color: #fff;
+    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+    border-color: #6366f1;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35);
+    transform: translateY(-1px);
+}
+
+.admin-action-btn--delete {
+    color: #be123c;
+    background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%);
+    border-color: #fecdd3;
+    box-shadow: 0 1px 2px rgba(244, 63, 94, 0.1);
+}
+
+.admin-action-btn--delete:hover {
+    color: #fff;
+    background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%);
+    border-color: #f43f5e;
+    box-shadow: 0 4px 12px rgba(244, 63, 94, 0.35);
+    transform: translateY(-1px);
+}
+
+.btn-admin-create {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.55rem 1.1rem;
+    font-weight: 700;
+    font-size: 0.875rem;
+    color: #fff;
+    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
+    transition: all 0.2s ease;
+}
+
+.btn-admin-create:hover {
+    color: #fff;
+    background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.45);
+    transform: translateY(-1px);
+}
+
+.category-table__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    color: #b45309;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+}
