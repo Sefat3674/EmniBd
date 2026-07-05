@@ -1,0 +1,6 @@
+@model bool
+
+<span class="customer-status @(Model ? "customer-status--active" : "customer-status--inactive")">
+    <i class="bi @(Model ? "bi-person-check-fill" : "bi-person-dash") customer-status__icon"></i>
+    <span class="customer-status__label">@(Model ? "Active" : "Inactive")</span>
+</span>
