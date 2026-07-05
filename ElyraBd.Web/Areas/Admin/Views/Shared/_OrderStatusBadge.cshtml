@@ -1,0 +1,20 @@
+@using ElyraBd.Core.Enums
+@model OrderStatus
+
+@{
+    var (cssClass, icon, label) = Model switch
+    {
+        OrderStatus.Pending => ("order-status--pending", "bi-hourglass-split", "Pending"),
+        OrderStatus.Processing => ("order-status--processing", "bi-gear-wide-connected", "Processing"),
+        OrderStatus.Packed => ("order-status--packed", "bi-box-seam", "Packed"),
+        OrderStatus.Shipped => ("order-status--shipped", "bi-truck", "Shipped"),
+        OrderStatus.Delivered => ("order-status--delivered", "bi-check-circle-fill", "Delivered"),
+        OrderStatus.Cancelled => ("order-status--cancelled", "bi-x-circle", "Cancelled"),
+        _ => ("order-status--pending", "bi-circle", Model.ToString())
+    };
+}
+
+<span class="order-status @cssClass" title="@label">
+    <i class="bi @icon order-status__icon"></i>
+    <span class="order-status__label">@label</span>
+</span>

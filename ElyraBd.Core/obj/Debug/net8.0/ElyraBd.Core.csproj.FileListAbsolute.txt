@@ -6,8 +6,8 @@ E:\ElyraBD\ElyraBd.Core\obj\Debug\net8.0\ElyraBd.Core.GeneratedMSBuildEditorConf
 E:\ElyraBD\ElyraBd.Core\obj\Debug\net8.0\ElyraBd.Core.AssemblyInfoInputs.cache
 E:\ElyraBD\ElyraBd.Core\obj\Debug\net8.0\ElyraBd.Core.AssemblyInfo.cs
 E:\ElyraBD\ElyraBd.Core\obj\Debug\net8.0\ElyraBd.Core.csproj.CoreCompileInputs.cache
+E:\ElyraBD\ElyraBd.Core\obj\Debug\net8.0\ElyraBd.Core.sourcelink.json
 E:\ElyraBD\ElyraBd.Core\obj\Debug\net8.0\ElyraBd.Core.dll
 E:\ElyraBD\ElyraBd.Core\obj\Debug\net8.0\refint\ElyraBd.Core.dll
 E:\ElyraBD\ElyraBd.Core\obj\Debug\net8.0\ElyraBd.Core.pdb
 E:\ElyraBD\ElyraBd.Core\obj\Debug\net8.0\ref\ElyraBd.Core.dll
-E:\ElyraBD\ElyraBd.Core\obj\Debug\net8.0\ElyraBd.Core.sourcelink.json

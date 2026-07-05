@@ -1,4 +1,5 @@
 wwwroot\css\admin.css
+wwwroot\css\admin-orders.css
 wwwroot\css\auth.css
 wwwroot\css\shop.css
 wwwroot\css\site.css

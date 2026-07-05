@@ -3,22 +3,39 @@
 @{
     ViewData["Title"] = "Orders";
     var status = ViewBag.Status as OrderStatus?;
+    var allStatuses = Enum.GetValues<OrderStatus>();
 }
 
-<form method="get" class="row g-2 align-items-end mb-3">
-    <div class="col-auto">
-        <label class="form-label small mb-0">Filter by status</label>
-        <select name="status" class="form-select form-select-sm" asp-items="ViewBag.StatusList" onchange="this.form.submit()"></select>
+<div class="orders-page-header mb-4">
+    <div class="d-flex flex-wrap justify-content-between align-items-start gap-3">
+        <div>
+            <p class="text-muted mb-1 small text-uppercase fw-semibold letter-spacing">Order management</p>
+            <h2 class="fw-bold mb-0">@Model.Count order@(Model.Count == 1 ? "" : "s")</h2>
+        </div>
+        <form method="get" class="orders-filter-form">
+            <label class="form-label small mb-1 text-muted">Filter by status</label>
+            <select name="status" class="form-select form-select-sm orders-status-select" asp-items="ViewBag.StatusList" onchange="this.form.submit()"></select>
+        </form>
     </div>
-    <div class="col-auto">
-        <span class="text-muted">@Model.Count order(s)</span>
-    </div>
-</form>
 
-<div class="admin-table-card">
+    <div class="order-status-filters mt-3">
+        <a asp-action="Index" class="order-status-filter @(status is null ? "active" : "")">
+            All
+        </a>
+        @foreach (var s in allStatuses)
+        {
+            <a asp-action="Index" asp-route-status="@s"
+               class="order-status-filter order-status-filter--@s.ToString().ToLowerInvariant() @(status == s ? "active" : "")">
+                @s
+            </a>
+        }
+    </div>
+</div>
+
+<div class="admin-table-card orders-table-card">
     <div class="table-responsive">
-        <table class="table table-hover mb-0 align-middle">
-            <thead class="table-light">
+        <table class="table table-hover mb-0 align-middle orders-table">
+            <thead>
                 <tr>
                     <th>Order #</th>
                     <th>Date</th>
@@ -31,14 +48,22 @@
             <tbody>
             @foreach (var order in Model)
             {
-                <tr>
-                    <td><strong>@order.OrderNumber</strong></td>
-                    <td>@order.OrderDate.ToLocalTime().ToString("dd MMM yyyy")</td>
-                    <td>@order.ItemCount</td>
-                    <td>৳@order.TotalAmount.ToString("N2")</td>
-                    <td><span class="badge @Badge(order.Status)">@order.Status</span></td>
+                <tr class="orders-table__row">
+                    <td>
+                        <span class="orders-table__number">@order.OrderNumber</span>
+                    </td>
+                    <td class="text-muted">@order.OrderDate.ToLocalTime().ToString("dd MMM yyyy")</td>
+                    <td>
+                        <span class="orders-table__items">@order.ItemCount</span>
+                    </td>
+                    <td class="fw-semibold">৳@order.TotalAmount.ToString("N2")</td>
+                    <td>
+                        <partial name="_OrderStatusBadge" model="order.Status" />
+                    </td>
                     <td class="text-end">
-                        <a asp-action="Details" asp-route-id="@order.Id" class="btn btn-sm btn-outline-primary">Manage</a>
+                        <a asp-action="Details" asp-route-id="@order.Id" class="btn btn-sm btn-orders-manage">
+                            Manage <i class="bi bi-arrow-right-short"></i>
+                        </a>
                     </td>
                 </tr>
             }
@@ -49,17 +74,8 @@
 
 @if (!Model.Any())
 {
-    <p class="text-muted text-center py-4">No orders found.</p>
-}
-
-@functions {
-    string Badge(OrderStatus s) => s switch
-    {
-        OrderStatus.Delivered => "text-bg-success",
-        OrderStatus.Shipped => "text-bg-info",
-        OrderStatus.Packed => "text-bg-primary",
-        OrderStatus.Processing => "text-bg-warning",
-        OrderStatus.Cancelled => "text-bg-secondary",
-        _ => "text-bg-secondary"
-    };
+    <div class="orders-empty text-center py-5">
+        <i class="bi bi-inbox display-4 text-muted"></i>
+        <p class="text-muted mt-3 mb-0">No orders found for this filter.</p>
+    </div>
 }
